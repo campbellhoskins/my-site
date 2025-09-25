@@ -16,6 +16,10 @@ const navItems = [
     name: 'projects',
     action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   },
+  {
+    name: 'contact',
+    action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  },
 ]
 
 export function Navbar() {
@@ -23,7 +27,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'experience', 'projects']
+      const sections = ['about', 'experience', 'projects', 'contact']
       const scrollPosition = window.scrollY + 200 // Offset to account for scroll margin
 
       for (const sectionId of sections) {

@@ -61,8 +61,8 @@
 }
 
 ::selection {
-  background-color: #5eead4;
-  color: #134e4a;
+  background-color: rgba(148, 163, 184, 0.3);
+  color: inherit;
 }
 
 :root {

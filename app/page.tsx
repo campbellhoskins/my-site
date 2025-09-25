@@ -35,15 +35,12 @@ export default function Page() {
       
       <main id="content" className="pt-24 lg:w-[52%] lg:py-24">
         <section id="about" className="scroll-mt-24">
-          <h2 className="mb-6 text-xl font-semibold tracking-tighter text-slate-200">
-            About
-          </h2>
           <div className="text-base text-slate-400 leading-relaxed space-y-4">
             <p>
               I'm a software engineer passionate about building <strong className="text-slate-200">cutting-edge tools that solve real-world problems</strong>. I love tackling tough challenges—digging deep to understand them, exploring new ideas, and finding the most efficient solutions in a world where new technologies emerge every day.
             </p>
             <p>
-              Currently, I'm a software engineer at <strong className="text-slate-200">Microsoft</strong>, working on the <strong className="text-slate-200">Windows Performance Analyzer application</strong>. My team is focused on <strong className="text-slate-200">integrating AI into the tool</strong> to help users more easily diagnose and solve system performance issues. I've had the chance to work at both a <strong className="text-slate-200">small fintech startup and in big tech</strong>, and I'm always eager to connect with people who are building creative solutions to interesting problems.
+              Currently, I'm a software engineer working to <strong className="text-slate-200">integrate AI into the Windows Performance Analyzer application at Microsoft</strong>. My team is focused on helping users more easily diagnose and solve system performance issues. I've had the chance to work at both a <strong className="text-slate-200">small fintech startup and in big tech</strong>, and I'm always eager to connect with people who are building creative solutions to interesting problems.
             </p>
             <p>
               My time at <strong className="text-slate-200">Stanford University studying Artificial Intelligence and Machine Learning</strong> not only sharpened my ability to write code and build advanced systems, but also reinforced the importance of connecting with people, asking the right questions, and fostering genuine conversations that lead to better solutions. To me, software is just as much about people as it is about technology.
@@ -113,6 +110,32 @@ export default function Page() {
                 />
               </svg>
             </a>
+          </div>
+        </section>
+        
+        <section id="contact" className="scroll-mt-24">
+          <h2 className="mb-6 text-xl font-semibold tracking-tighter mt-32 text-slate-200">
+            Contact
+          </h2>
+          <div className="text-base text-slate-400 leading-relaxed">
+            <p>
+              Please feel free to reach out to me via{' '}
+              <a
+                href="https://linkedin.com/in/campbellhoskins"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-200 hover:text-white transition-colors duration-200 underline"
+              >
+                LinkedIn
+              </a>{' '}
+              or email me at{' '}
+              <a
+                href="mailto:campbellhoskins@gmail.com"
+                className="text-slate-200 hover:text-white transition-colors duration-200 underline"
+              >
+                campbellhoskins@gmail.com
+              </a>
+            </p>
           </div>
         </section>
         <div className="h-screen"></div>
