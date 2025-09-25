@@ -1,0 +1,63 @@
+---
+title: "Blockchain Decentralized Exchange"
+completedAt: "2024-01-20"
+summary: "Peer-to-peer marketplace for exchanging ETH and tokens in a non-custodial manner with liquidity pool rewards"
+technologies: ["Solidity", "JavaScript", "Hardhat", "Ethers.js", "Web3", "OpenZeppelin", "Uniswap V1"]
+githubUrl: "https://github.com/campbellhoskins/blockchain-dex"
+---
+
+A peer-to-peer marketplace for exchanging ETH and an arbitrary token (LRT in this example) in a non-custodial manner. Includes availability for liquidity pool contribution to earn fee rewards based on the percent share.
+
+Based on Uniswap V1 structure.
+
+## Overview
+
+This project implements a decentralized exchange (DEX) that allows users to swap between ETH and custom tokens without relying on a centralized intermediary. The exchange includes both trading functionality and liquidity provision mechanisms, enabling users to earn fees by providing liquidity to the platform.
+
+## Key Features
+
+- **Non-custodial Trading**: Users maintain control of their funds throughout the trading process
+- **Liquidity Pools**: Users can contribute liquidity and earn proportional fee rewards
+- **Automated Market Maker (AMM)**: Implements constant product formula for price discovery
+- **Web Interface**: User-friendly frontend for interacting with the exchange
+- **Smart Contract Security**: Built with OpenZeppelin contracts and best practices
+
+## Architecture
+
+The project follows the Uniswap V1 architecture with:
+
+- **Exchange Contract**: Core trading logic and liquidity management
+- **Token Contract**: ERC-20 compatible token (LRT) for testing
+- **Web Application**: Frontend interface for user interactions
+- **Hardhat Framework**: Development and deployment infrastructure
+
+## Technologies Used
+
+- **Solidity** - Smart contract development
+- **JavaScript** - Frontend and deployment scripts
+- **Hardhat** - Development framework and testing
+- **Ethers.js** - Ethereum interaction library
+- **OpenZeppelin** - Secure contract libraries
+- **Web3** - Blockchain connectivity
+
+## Setup & Deployment
+
+1. Install dependencies: `npm install --save-dev hardhat @nomiclabs/hardhat-ethers ethers @openzeppelin/contracts`
+2. Start local blockchain: `npx hardhat node`
+3. Deploy contracts: `npx hardhat run --network localhost scripts/deploy_token.js` and `npx hardhat run --network localhost scripts/deploy_exchange.js`
+4. Access web interface: Open `web_app/index.html` in browser
+
+## Functionality
+
+- **Token Swapping**: Exchange ETH for LRT tokens and vice versa
+- **Liquidity Provision**: Add liquidity to earn trading fees
+- **Fee Distribution**: Automatic fee distribution based on liquidity share
+- **Multi-address Support**: Test with different wallet addresses
+
+## Development Features
+
+- Comprehensive test suite
+- Local development environment
+- Contract deployment scripts
+- Web interface for testing
+- Hardhat configuration for multiple networks

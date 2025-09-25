@@ -3,9 +3,14 @@ import path from 'path'
 
 type Metadata = {
   title: string
-  publishedAt: string
+  company: string
+  startDate: string
+  endDate?: string
   summary: string
   image?: string
+  technologies?: string | string[]
+  location?: string
+  type?: string // e.g., "Full-time", "Part-time", "Contract", "Internship"
 }
 
 function parseFrontmatter(fileContent: string) {
@@ -20,22 +25,31 @@ function parseFrontmatter(fileContent: string) {
     let [key, ...valueArr] = line.split(': ')
     let value = valueArr.join(': ').trim()
     value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value
+    
+    // Handle array fields
+    if (key.trim() === 'technologies' && value.startsWith('[') && value.endsWith(']')) {
+      // Parse YAML array format: [item1, item2, item3]
+      let arrayContent = value.slice(1, -1) // Remove brackets
+      let arrayItems = arrayContent.split(',').map(item => item.trim().replace(/^['"](.*)['"]$/, '$1'))
+      metadata[key.trim() as keyof Metadata] = arrayItems as any
+    } else {
+      metadata[key.trim() as keyof Metadata] = value as any
+    }
   })
 
   return { metadata: metadata as Metadata, content }
 }
 
-function getMDXFiles(dir) {
+function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
 }
 
-function readMDXFile(filePath) {
+function readMDXFile(filePath: string) {
   let rawContent = fs.readFileSync(filePath, 'utf-8')
   return parseFrontmatter(rawContent)
 }
 
-function getMDXData(dir) {
+function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir)
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file))
@@ -49,8 +63,8 @@ function getMDXData(dir) {
   })
 }
 
-export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+export function getExperiences() {
+  return getMDXData(path.join(process.cwd(), 'app', 'experiences', 'experiences'))
 }
 
 export function formatDate(date: string, includeRelative = false) {
@@ -78,7 +92,6 @@ export function formatDate(date: string, includeRelative = false) {
 
   let fullDate = targetDate.toLocaleString('en-us', {
     month: 'long',
-    day: 'numeric',
     year: 'numeric',
   })
 
@@ -87,4 +100,10 @@ export function formatDate(date: string, includeRelative = false) {
   }
 
   return `${fullDate} (${formattedDate})`
+}
+
+export function formatDateRange(startDate: string, endDate?: string) {
+  const start = formatDate(startDate)
+  const end = endDate ? formatDate(endDate) : 'Present'
+  return `${start} - ${end}`
 }

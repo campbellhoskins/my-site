@@ -1,0 +1,39 @@
+---
+title: "Bay Wheels Analysis"
+completedAt: "2024-01-15"
+summary: "Regression model to analyze Lyft Bike Rental Bay Wheel's ride data from the San Francisco Bay Area"
+technologies: ["Python", "Jupyter Notebook", "Linear Regression", "Data Analysis", "Haversine Distance", "Pandas", "NumPy"]
+githubUrl: "https://github.com/campbellhoskins/bay-wheels"
+---
+
+This repository includes the file used to analyze Lyft Bike Rental Bay Wheel's ride data from the San Francisco Bay Area. A linear regression model is implemented to predict ride times depending on ride distance, start and end stations and bike type.
+
+## Data Used
+
+I pulled data from [https://s3.amazonaws.com/baywheels-data/index.html](https://s3.amazonaws.com/baywheels-data/index.html) which includes trip duration, start and end timestamps and start and end stations as well as coordinates for each Bay Wheel bike trip in the Bay Area.
+
+## Process
+
+First, I used start and end station ID's to keep only the rides which started and ended in San Francisco. I changed each ride's start and end coordinates to be the mean coordinates of their start and end station in order to track the frequency of each station as a start and end destination. I used these frequencies to plot the start and end stations on a map with larger dots representing stations with higher frequencies of rides. Next, I used the haversine distance formula and the start and end coordinates of the rides to find the distance of the ride. In order to make my regression model more effective, I removed the largest outliers and kept only the rides where the average seconds/mile was within two standard deviations of the mean. Finally, I made graphs plotting the distance versus time of rides and trained my linear regression model to predict ride time based off of ride distance, bike type, start and end station and user type.
+
+## Results
+
+The analysis produced several key visualizations:
+
+- Scatter plot of ride start locations (larger dot means higher frequency)
+- Scatter plot of ride end locations (larger dot means higher frequency)  
+- Distance vs. Ride Time (without outliers removed)
+- Distance vs Ride Time (outliers removed)
+
+Finally, results of the linear regression model:
+
+- **Coefficient of Determination**: 0.7144931901646129
+- **Intercept**: 268.993173760169
+
+## Key Features
+
+- **Data Processing**: Filtered Bay Area bike share data to focus on San Francisco rides
+- **Geospatial Analysis**: Used haversine distance formula to calculate ride distances
+- **Outlier Detection**: Removed statistical outliers to improve model accuracy
+- **Regression Modeling**: Implemented linear regression to predict ride times
+- **Data Visualization**: Created scatter plots showing station usage patterns and distance-time relationships

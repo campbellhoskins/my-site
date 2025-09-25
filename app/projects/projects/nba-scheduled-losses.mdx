@@ -1,0 +1,53 @@
+---
+title: "NBA Scheduled Losses"
+completedAt: "2023-12-01"
+summary: "Machine learning model with feature engineering centered around team fatigue factors to predict scheduled losses in the NBA schedule"
+technologies: ["Python", "Jupyter Notebook", "scikit-learn", "TensorFlow", "pandas", "numpy", "Logistic Regression", "Neural Networks"]
+githubUrl: "https://github.com/campbellhoskins/NBA-scheduled-losses"
+---
+
+A machine learning project that analyzes NBA team fatigue factors to predict "scheduled losses" - games where teams underperform due to schedule-induced factors like travel, rest, and game frequency.
+
+## Problem Statement
+
+NBA teams face grueling schedules with extensive travel, back-to-back games, and cross-country flights. Research shows that sleep disruption and travel fatigue significantly impact athletic performance. This project aimed to predict when teams might underperform due to these schedule factors, challenging the efficiency of Las Vegas odds in accounting for fatigue.
+
+## Key Features
+
+- **Feature Engineering**: Calculated travel distances, rest days, timezone changes, and cumulative fatigue factors
+- **Data Processing**: Merged game data with betting odds spanning over 12,000 NBA games from 2011 onwards
+- **Multiple Models**: Implemented both Logistic Regression and Neural Network approaches
+- **Time Series Analysis**: Explored LSTM and attention mechanisms for sequential game prediction
+- **Statistical Validation**: Performed permutation testing and error analysis
+
+## Technologies Used
+
+- **Python** - Primary programming language
+- **Jupyter Notebook** - Interactive analysis and visualization
+- **scikit-learn** - Logistic regression implementation
+- **TensorFlow/Keras** - Neural network development
+- **pandas** - Data manipulation and analysis
+- **numpy** - Numerical computing
+- **Bayesian Optimization** - Hyperparameter tuning
+
+## Methodology
+
+The project involved extensive feature engineering including:
+- Miles traveled between consecutive games
+- Days of rest between games
+- Timezone changes
+- Previous game overtime status
+- Home/away status
+- Betting spread analysis
+
+Two main approaches were tested:
+1. **Logistic Regression** - Interpretable baseline model
+2. **Neural Network** - Deep learning approach with batch normalization and dropout
+
+## Results
+
+While the models showed modest improvements over random chance, the results indicated that publicly available fatigue data alone may not be sufficient to consistently beat Vegas odds. The project provides valuable insights into the complexity of predicting NBA outcomes and the sophistication of professional sports betting algorithms.
+
+## Future Work
+
+The project suggests that access to more granular data (sleep patterns, nutrition, detailed travel schedules) could potentially improve predictions, as evidenced by Dr. Cheri Mah's work with NBA teams.

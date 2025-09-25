@@ -1,40 +1,82 @@
-import Link from 'next/link'
+'use client'
 
-const navItems = {
-  '/': {
-    name: 'home',
+import { Button } from './ui/button'
+import { useState, useEffect } from 'react'
+
+const navItems = [
+  {
+    name: 'about',
+    action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
   },
-  '/blog': {
-    name: 'blog',
+  {
+    name: 'experience',
+    action: () => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })
   },
-  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
-    name: 'deploy',
+  {
+    name: 'projects',
+    action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   },
-}
+]
 
 export function Navbar() {
+  const [activeSection, setActiveSection] = useState('about')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['about', 'experience', 'projects']
+      const scrollPosition = window.scrollY + 200 // Offset to account for scroll margin
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const elementTop = rect.top + window.scrollY
+          const elementBottom = elementTop + rect.height
+
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveSection(sectionId)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <aside className="-ml-[8px] mb-16 tracking-tight">
-      <div className="lg:sticky lg:top-20">
-        <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
-          id="nav"
-        >
-          <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+    <nav className="mb-8 tracking-tight">
+      <div className="flex flex-col space-y-2">
+        {navItems.map(({ name, action }) => {
+          const isActive = activeSection === name
+          return (
+            <Button
+              key={name}
+              variant="ghost"
+              onClick={action}
+              className="justify-start w-fit h-auto py-2 px-3 group relative hover:bg-transparent"
+            >
+              <div className="flex items-center">
+                <div 
+                  className={`h-px bg-gray-400/60 transition-all duration-300 ${
+                    isActive ? 'w-16' : 'w-4 group-hover:w-16'
+                  }`}
+                />
+                <span 
+                  className={`ml-3 transition-all duration-300 ${
+                    isActive ? 'text-white font-medium' : 'text-gray-400/80 group-hover:text-white group-hover:font-medium'
+                  }`}
                 >
-                  {name}
-                </Link>
-              )
-            })}
-          </div>
-        </nav>
+                  {name.toUpperCase()}
+                </span>
+              </div>
+            </Button>
+          )
+        })}
       </div>
-    </aside>
+    </nav>
   )
 }

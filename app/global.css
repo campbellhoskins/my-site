@@ -1,8 +1,68 @@
 @import 'tailwindcss';
 
+@layer base {
+  :root {
+    --background: 200 100% 8%;
+    --foreground: 210 40% 98%;
+    --card: 200 100% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 200 100% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 200 100% 8%;
+    --secondary: 200 100% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 200 100% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 200 100% 15%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 200 100% 20%;
+    --input: 200 100% 20%;
+    --ring: 210 40% 98%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 200 100% 6%;
+    --foreground: 210 40% 98%;
+    --card: 200 100% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 200 100% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 200 100% 6%;
+    --secondary: 200 100% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 200 100% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 200 100% 12%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 200 100% 18%;
+    --input: 200 100% 18%;
+    --ring: 210 40% 98%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  html, body {
+    background-color: #0f172a !important;
+    color: #94a3b8;
+  }
+  body {
+    background-color: #0f172a !important;
+  }
+}
+
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: #5eead4;
+  color: #134e4a;
 }
 
 :root {
