@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { getExperiences } from 'app/experiences/utils'
 import { Navbar } from 'app/components/nav'
 import { Badge } from '../../components/ui/badge'
-import ReactMarkdown from 'react-markdown'
+import { marked } from 'marked'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -77,9 +77,10 @@ export default async function Experience({ params }: Props) {
           </div>
         )}
       </div>
-      <div className="prose prose-neutral dark:prose-invert">
-        <ReactMarkdown>{content}</ReactMarkdown>
-      </div>
+      <div 
+        className="prose prose-neutral dark:prose-invert"
+        dangerouslySetInnerHTML={{ __html: marked(content) }}
+      />
     </section>
   )
 }

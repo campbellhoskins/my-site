@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  outputFileTracingRoot: __dirname,
-  experimental: {
-    serverComponentsExternalPackages: ['react-markdown']
-  }
+  outputFileTracingRoot: __dirname
 }
 
 module.exports = nextConfig
