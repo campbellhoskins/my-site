@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "campbellhoskins.com"
+        }
+      ],
+      "destination": "https://www.campbellhoskins.com",
+      "permanent": true
+    }
+  ]
+}

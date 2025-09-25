@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { formatDateRange } from 'app/experiences/date-utils'
 import { Card, CardContent } from './ui/card'
 import { Badge } from './ui/badge'
@@ -38,10 +37,9 @@ export function ExperiencesListClient({ experiences }: ExperiencesListClientProp
           return 1
         })
         .map((experience) => (
-          <Card key={experience.slug} className="group cursor-pointer">
+          <Card key={experience.slug} className="group">
             <CardContent>
-              <Link href={`/experiences/${experience.slug}`} className="block">
-                <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-4">
                   {/* Header with date range and type */}
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-400 tabular-nums">
@@ -56,7 +54,7 @@ export function ExperiencesListClient({ experiences }: ExperiencesListClientProp
                   
                   {/* Job title and company */}
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-slate-200 group-hover:text-white transition-colors">
+                    <h3 className="text-lg font-semibold text-slate-200">
                       {experience.metadata.title}
                     </h3>
                     <p className="text-sm text-slate-400">
@@ -87,7 +85,6 @@ export function ExperiencesListClient({ experiences }: ExperiencesListClientProp
                     </div>
                   )}
                 </div>
-              </Link>
             </CardContent>
           </Card>
         ))}
